@@ -12,6 +12,9 @@ function boostrap() {
   const app = express();
 
   app.use(bodyParser.json());
+  app.get("/", (req, res) => {
+    res.send("API 1");
+  });
   app.use("/health", healthRouter);
   app.use("/pets", petRouter);
 

@@ -1,11 +1,13 @@
+import { config } from "dotenv";
 import { Pool } from "pg";
+config();
 
-const config = {
-  host: "localhost",
-  port: 5433,
-  user: "postgres",
-  database: "api_ts",
-  password: "postgres",
+const dbconfig = {
+  host: process.env.HOST,
+  port: Number(process.env.DBPORT),
+  user: process.env.USER,
+  database: process.env.DATABASE,
+  password: process.env.PASSWORD,
 };
 
-export const pool = new Pool(config);
+export const pool = new Pool(dbconfig);
