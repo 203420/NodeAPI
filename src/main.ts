@@ -5,17 +5,12 @@ import bodyParser from "body-parser";
 import express from "express";
 
 import { config } from "./config";
-import { healthRouter } from "./health/health-router";
 import { petRouter } from "./pets/infraestructure/PetRouter";
 
 function boostrap() {
   const app = express();
 
   app.use(bodyParser.json());
-  app.get("/", (req, res) => {
-    res.send("API 1");
-  });
-  app.use("/health", healthRouter);
   app.use("/pets", petRouter);
 
   const { port } = config.server;
